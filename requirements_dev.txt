@@ -1,0 +1,4 @@
+
+
+-e git+ssh://git@github.com/fvutils/mkdv.git#egg=mkdv
+
