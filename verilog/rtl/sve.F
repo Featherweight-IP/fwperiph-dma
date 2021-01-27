@@ -1,5 +1,5 @@
 +incdir+.
-fw_periph_dma_wb.v
+fwperiph_dma_wb.v
 wb_dma_ch_arb.v
 wb_dma_ch_pri_enc.v
 wb_dma_ch_rf.v

@@ -83,7 +83,7 @@
 //
 //
 
-`timescale 1ns / 10ps
+// `timescale 1ns / 10ps
 
 // This define selects how the slave interface determines if
 // the internal register file or pass through mode are selected.

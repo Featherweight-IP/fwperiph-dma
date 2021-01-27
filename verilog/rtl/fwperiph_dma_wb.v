@@ -91,22 +91,23 @@
 `include "wb_dma_defines.vh"
 `include "wishbone_macros.svh"
 
-module fw_periph_dma_wb #(
+module fwperiph_dma_wb #(
 		// chXX_conf = { CBUF, ED, ARS, EN }
 		parameter		rf_addr = 0,
 		parameter	[1:0]	pri_sel = 2'h0,
-		parameter		ch_count = 4,
-		parameter	[3:0]	ch0_conf = 4'h1,
-		parameter	[3:0]	ch1_conf = 4'h0,
-		parameter	[3:0]	ch2_conf = 4'h0,
-		parameter	[3:0]	ch3_conf = 4'h0,
-		parameter	[3:0]	ch4_conf = 4'h0,
-		parameter	[3:0]	ch5_conf = 4'h0,
-		parameter	[3:0]	ch6_conf = 4'h0,
-		parameter	[3:0]	ch7_conf = 4'h0,
-		parameter	[3:0]	ch8_conf = 4'h0,
-		parameter	[3:0]	ch9_conf = 4'h0,
-		parameter	[3:0]	ch10_conf = 4'h0,
+		parameter		    ch_count = 4,
+		parameter   [3:0]   ch_dflt_conf = 4'h1,
+		parameter	[3:0]	ch0_conf = (ch_count>0)?ch_dflt_conf:4'h0,
+		parameter	[3:0]	ch1_conf = (ch_count>1)?ch_dflt_conf:4'h0,
+		parameter	[3:0]	ch2_conf = (ch_count>2)?ch_dflt_conf:4'h0,
+		parameter	[3:0]	ch3_conf = (ch_count>3)?ch_dflt_conf:4'h0,
+		parameter	[3:0]	ch4_conf = (ch_count>4)?ch_dflt_conf:4'h0,
+		parameter	[3:0]	ch5_conf = (ch_count>5)?ch_dflt_conf:4'h0,
+		parameter	[3:0]	ch6_conf = (ch_count>6)?ch_dflt_conf:4'h0,
+		parameter	[3:0]	ch7_conf = (ch_count>7)?ch_dflt_conf:4'h0,
+		parameter	[3:0]	ch8_conf = (ch_count>8)?ch_dflt_conf:4'h0,
+		parameter	[3:0]	ch9_conf = (ch_count>9)?ch_dflt_conf:4'h0,
+		parameter	[3:0]	ch10_conf = (ch_count>10)?ch_dflt_conf:4'h0,
 		parameter	[3:0]	ch11_conf = 4'h0,
 		parameter	[3:0]	ch12_conf = 4'h0,
 		parameter	[3:0]	ch13_conf = 4'h0,
