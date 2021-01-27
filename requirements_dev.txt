@@ -1,4 +1,6 @@
 
 
 -e git+ssh://git@github.com/fvutils/mkdv.git#egg=mkdv
+-e git+ssh://git@github.com/pybfms/pybfms.git#egg=pybfms
+-e git+ssh://git@github.com/pybfms/pybfms_wishbone.git#egg=pybfms_wishbone
 

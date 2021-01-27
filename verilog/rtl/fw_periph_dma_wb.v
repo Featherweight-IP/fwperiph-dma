@@ -128,7 +128,8 @@ module fw_periph_dma_wb #(
 		parameter	[3:0]	ch29_conf = 4'h0,
 		parameter	[3:0]	ch30_conf = 4'h0
 		) (
-		clock, reset,
+		input 					clock, 
+		input 					reset,
 		
 		`WB_TARGET_PORT(rt_, 32, 32),
 		
@@ -162,8 +163,6 @@ module fw_periph_dma_wb #(
 // Module IOs
 //
 
-input		clock, reset;
-
 // --------------------------------------
 // WISHBONE INTERFACE 1
 // Note: stubbed out
@@ -179,15 +178,6 @@ wire		wb1_stb_i = 0;
 wire		wb1_ack_o;
 wire		wb1_err_o;
 //output		wb1_rty_o;
-
-// --------------------------------------
-// Misc Signals
-input	[ch_count-1:0]	dma_req_i;
-input	[ch_count-1:0]	dma_nd_i;
-output	[ch_count-1:0]	dma_ack_o;
-input	[ch_count-1:0]	dma_rest_i;
-output			inta_o;
-output			intb_o;
 
 ////////////////////////////////////////////////////////////////////
 //
@@ -238,7 +228,6 @@ wire	[31:0]	adr0, adr1;	// Selected Channel Addresses
 wire	[31:0]	am0, am1;	// Selected Channel Address Masks
 wire		next_ch;	// Indicates the DMA Engine is done
 
-wire		inta_o, intb_o;
 wire		dma_abort;
 wire		dma_busy, dma_err, dma_done, dma_done_all;
 wire	[31:0]	de_csr;
@@ -361,7 +350,7 @@ wb_dma_rf   #(	ch0_conf,
 		ch28_conf,
 		ch29_conf,
 		ch30_conf)
-		u0(
+		u_rf(
 		.clk(		clock		),
 		.rst(		reset		),
 		.wb_rf_adr(	slv0_adr[9:2]	),
@@ -674,7 +663,7 @@ wb_dma_ch_sel #(pri_sel,
 		ch28_conf,
 		ch29_conf,
 		ch30_conf)
-		u1(
+		u_ch_sel(
 		.clk(		clock		),
 		.rst(		reset		),
 		.req_i(		dma_req		),
@@ -949,7 +938,7 @@ wb_dma_ch_sel #(pri_sel,
 
 
 // DMA Engine
-wb_dma_de	u2(
+wb_dma_de	u_dma_de(
 		.clk(		clock		),
 		.rst(		reset		),
 		.mast0_go(	mast0_go	),
@@ -1000,11 +989,11 @@ wb_dma_de	u2(
 		);
 
 // Wishbone Interface 0
-wb_dma_wb_if	#(rf_addr)	u3(
+wb_dma_wb_if	#(rf_addr)	u_wb_if0(
 		.clk(		clock		),
 		.rst(		reset		),
-		.wbs_data_i(	rt_dat_w	),
-		.wbs_data_o(	rt_dat_r	),
+		.wbs_data_i(	i0_dat_r	),
+		.wbs_data_o(	i0_dat_w	),
 		.wb_addr_i(	rt_adr	),
 		.wb_sel_i(	rt_sel	),
 		.wb_we_i(	rt_we	),
@@ -1013,8 +1002,8 @@ wb_dma_wb_if	#(rf_addr)	u3(
 		.wb_ack_o(	rt_ack	),
 		.wb_err_o(	rt_err	),
 		.wb_rty_o(	wb0_rty_o	),
-		.wbm_data_i(	i0_dat_r	),
-		.wbm_data_o(	i0_dat_w	),
+		.wbm_data_i(	rt_dat_w	),
+		.wbm_data_o(	rt_dat_r	),
 		.wb_addr_o(	i0_adr	),
 		.wb_sel_o(	i0_sel	),
 		.wb_we_o(	i0_we	),
@@ -1045,11 +1034,11 @@ wb_dma_wb_if	#(rf_addr)	u3(
 		);
 
 // Wishbone Interface 1
-wb_dma_wb_if	#(rf_addr) u4(
+wb_dma_wb_if	#(rf_addr) u_wb_if1(
 		.clk(		clock		),
 		.rst(		reset		),
-		.wbs_data_i(	wb1s_data_i	),
-		.wbs_data_o(	wb1s_data_o	),
+		.wbs_data_i(	i1_dat_r	),
+		.wbs_data_o(	i1_dat_w	),
 		.wb_addr_i(	wb1_addr_i	),
 		.wb_sel_i(	wb1_sel_i	),
 		.wb_we_i(	wb1_we_i	),

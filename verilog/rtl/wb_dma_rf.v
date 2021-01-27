@@ -675,7 +675,7 @@ always @(posedge clk)
 
 // chXX_conf = { CBUF, ED, ARS, EN }
 
-wb_dma_ch_rf #(0, ch0_conf[0], ch0_conf[1], ch0_conf[2], ch0_conf[3]) u0(
+wb_dma_ch_rf #(0, ch0_conf[0], ch0_conf[1], ch0_conf[2], ch0_conf[3]) u_ch_rf0(
 		.clk(		clk		),
 		.rst(		rst		),
 		.pointer(	pointer0	),
@@ -713,7 +713,7 @@ wb_dma_ch_rf #(0, ch0_conf[0], ch0_conf[1], ch0_conf[2], ch0_conf[3]) u0(
 		.ptr_set(	ptr_set		)
 		);
 
-wb_dma_ch_rf #(1, ch1_conf[0], ch1_conf[1], ch1_conf[2], ch1_conf[3]) u1(
+wb_dma_ch_rf #(1, ch1_conf[0], ch1_conf[1], ch1_conf[2], ch1_conf[3]) u_ch_rf1(
 		.clk(		clk		),
 		.rst(		rst		),
 		.pointer(	pointer1	),
@@ -751,7 +751,7 @@ wb_dma_ch_rf #(1, ch1_conf[0], ch1_conf[1], ch1_conf[2], ch1_conf[3]) u1(
 		.ptr_set(	ptr_set		)
 		);
 
-wb_dma_ch_rf #(2, ch2_conf[0], ch2_conf[1], ch2_conf[2], ch2_conf[3]) u2(
+wb_dma_ch_rf #(2, ch2_conf[0], ch2_conf[1], ch2_conf[2], ch2_conf[3]) u_ch_rf2(
 		.clk(		clk		),
 		.rst(		rst		),
 		.pointer(	pointer2	),
@@ -789,7 +789,7 @@ wb_dma_ch_rf #(2, ch2_conf[0], ch2_conf[1], ch2_conf[2], ch2_conf[3]) u2(
 		.ptr_set(	ptr_set		)
 		);
 
-wb_dma_ch_rf #(3, ch3_conf[0], ch3_conf[1], ch3_conf[2], ch3_conf[3]) u3(
+wb_dma_ch_rf #(3, ch3_conf[0], ch3_conf[1], ch3_conf[2], ch3_conf[3]) u_ch_rf3(
 		.clk(		clk		),
 		.rst(		rst		),
 		.pointer(	pointer3	),
