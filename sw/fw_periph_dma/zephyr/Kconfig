@@ -1,0 +1,7 @@
+
+menuconfig FW_PERIPH_DMA
+		bool "Featherweight IP Peripheral DMA Engine"
+		default y
+		help
+			This module provides a driver for the fwperiph-dma IP
+			
