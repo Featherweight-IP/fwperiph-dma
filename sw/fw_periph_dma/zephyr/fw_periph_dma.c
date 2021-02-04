@@ -17,7 +17,26 @@
 static void fw_periph_dma_isr(const struct device *dev) {
 	const fw_periph_dma_cfg_t *const dma_cfg =
 			(const fw_periph_dma_cfg_t const*)dev->config;
-	sys_write32(0x00000000, &dma_cfg->regs->int_msk_a);
+	// Get the pending interrupts
+	uint32_t src_a = sys_read32(&dma_cfg->regs->int_src_a);
+	uint32_t i;
+
+	for (i=0; i<8 && src_a; i++) {
+		if (src_a & 1) {
+			// Clear the interrupt
+			uint32_t csr = sys_read32(&dma_cfg->regs->channels[i].csr);
+
+			// Notify if requested
+			if (dma_cfg->channels[i].callback) {
+				dma_cfg->channels[i].callback(
+						dev,
+						dma_cfg->channels[i].user_data,
+						i,
+						0 /* TODO */);
+			}
+			src_a >>= 1;
+		}
+	}
 }
 
 static int fw_periph_dma_init(const struct device *dev) {
@@ -30,6 +49,11 @@ static int fw_periph_dma_init(const struct device *dev) {
 	for (i=0; i<8; i++) {
 		uint32_t sz_v = ((256/4) << 16);
 		uint32_t csr = 0; // Cannot guarantee that registers are properly reset
+		fw_periph_dma_ch_t *ch = (fw_periph_dma_ch_t *)&dma_cfg->channels[i];
+
+		// Initialize callback info
+		ch->callback = 0;
+		ch->user_data = 0;
 
 		csr |= (1 << 18); 	// Enable completion interrupt
 		csr &= ~(1); 		// Disable the channel
@@ -59,10 +83,19 @@ static int fw_periph_dma_config(
 	uint32_t csr;
 	const fw_periph_dma_cfg_t *const dma_cfg =
 			(const fw_periph_dma_cfg_t const*)dev->config;
+	fw_periph_dma_ch_t *ch = (fw_periph_dma_ch_t *)&dma_cfg->channels[channel];
 	printk("==> fw_periph_dma_config\n");
 
 	if (channel >= 8) {
 		return -1;
+	}
+
+	if (config->complete_callback_en) {
+		ch->callback  = config->dma_callback;
+		ch->user_data = config->user_data;
+	} else {
+		ch->callback  = 0;
+		ch->user_data = 0;
 	}
 
 	csr = sys_read32(&dma_cfg->regs->channels[channel].csr);
@@ -74,10 +107,6 @@ static int fw_periph_dma_config(
 	// TODO: configure direction
 
 	sys_write32(csr, &dma_cfg->regs->channels[channel].csr);
-//	csr |= (1 << 0); // Enable channel
-
-
-
 
 	printk("<== fw_periph_dma_config\n");
 	return 0;
