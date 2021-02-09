@@ -1078,6 +1078,15 @@ wb_dma_wb_if	#(rf_addr) u_wb_if1(
 		.slv_pt_out(	slv1_pt_out	),
 		.slv_pt_in(	slv1_pt_in	)
 		);
+		
+	fwperiph_dma_dbg #(
+			.ch_count(ch_count)
+		) u_dbg (
+			.clock(clock),
+			.adr(	slv0_adr[9:2]	),
+			.dat_w(	slv0_dout	    ),
+			.we(	slv0_we	& rt_ack)
+		);
 
 
 endmodule

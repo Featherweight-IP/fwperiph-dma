@@ -2,4 +2,5 @@
 packages/
 rundir/
 cache/
+__pycache__/
 
