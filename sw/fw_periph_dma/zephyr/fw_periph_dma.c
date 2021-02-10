@@ -34,8 +34,8 @@ static void fw_periph_dma_isr(const struct device *dev) {
 						i,
 						0 /* TODO */);
 			}
-			src_a >>= 1;
 		}
+		src_a >>= 1;
 	}
 }
 

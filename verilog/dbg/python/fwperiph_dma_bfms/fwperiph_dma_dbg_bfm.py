@@ -47,6 +47,7 @@ class FwPeriphDmaDbgBfm(object):
                     # TODO: update state based on enablement
                     if (ch_reg.csr & 1):
                         # blank registers
+                        ch_reg.csr = dat
                         self._update_channel(channel, ch_reg)
                 ch_reg.csr = dat
             elif reg == 1: # SZ
@@ -75,13 +76,24 @@ class FwPeriphDmaDbgBfm(object):
     
     def _update_channel(self, channel, ch_regs):
         self._clr_src_s(channel)
+        self._clr_dst_s(channel)
+        self._clr_sz_s(channel)
         
         if ch_regs.csr & 1:
             # TODO: update content
             self._set_src_s(channel, 
-                "0x%08x (%s)" % (ch_regs.src, "i"))
-            pass
-        pass
+                "0x%08x (%s)" % (
+                    ch_regs.src, 
+                    "inc" if ch_regs.csr & 4 else "fix"))
+            self._set_dst_s(channel, 
+                "0x%08x (%s)" % (
+                    ch_regs.dst, 
+                    "inc" if ch_regs.csr & 2 else "fix"))
+
+            self._set_sz_s(channel, 
+                "%d (burst %d)" % (
+                    ch_regs.sz,
+                    ch_regs.chk_sz))
     
     @pybfms.import_task(pybfms.uint8_t)
     def _clr_src_s(self, channel):
@@ -90,10 +102,33 @@ class FwPeriphDmaDbgBfm(object):
     def _set_src_s(self, channel, val):
         for i,c in enumerate(val.encode()):
             self._set_src_c(channel, i, c)
-        pass
     
     @pybfms.import_task(pybfms.uint8_t,pybfms.uint8_t,pybfms.uint8_t)
     def _set_src_c(self, channel, idx, ch):
+        pass
+    
+    @pybfms.import_task(pybfms.uint8_t)
+    def _clr_dst_s(self, channel):
+        pass
+    
+    def _set_dst_s(self, channel, val):
+        for i,c in enumerate(val.encode()):
+            self._set_dst_c(channel, i, c)
+    
+    @pybfms.import_task(pybfms.uint8_t,pybfms.uint8_t,pybfms.uint8_t)
+    def _set_dst_c(self, channel, idx, ch):
+        pass
+    
+    @pybfms.import_task(pybfms.uint8_t)
+    def _clr_sz_s(self, channel):
+        pass
+    
+    def _set_sz_s(self, channel, val):
+        for i,c in enumerate(val.encode()):
+            self._set_sz_c(channel, i, c)
+    
+    @pybfms.import_task(pybfms.uint8_t,pybfms.uint8_t,pybfms.uint8_t)
+    def _set_sz_c(self, channel, idx, ch):
         pass
     
     @pybfms.export_task(pybfms.uint32_t)

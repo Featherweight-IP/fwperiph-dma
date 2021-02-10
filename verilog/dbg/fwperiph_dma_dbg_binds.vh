@@ -3,6 +3,8 @@
  
 `ifdef HAVE_BIND
 // TODO: Bind debug module	
+`define BINDTYPE_FWPERIPH_DMA_DBG \
+	bind fwperiph_dma_dbg fwperiph_dma_dbg_bfm #(.ch_count(ch_count)) u_dbg_bfm(.*)
 `else
 // TODO: Define macro
 `define BINDINST_FWPERIPH_DMA_DBG(ID,CH_COUNT, PATH) \

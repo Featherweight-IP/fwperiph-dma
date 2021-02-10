@@ -1085,7 +1085,9 @@ wb_dma_wb_if	#(rf_addr) u_wb_if1(
 			.clock(clock),
 			.adr(	slv0_adr[9:2]	),
 			.dat_w(	slv0_dout	    ),
-			.we(	slv0_we	& rt_ack)
+			.we(	slv0_we	& rt_ack),
+			.ch_sel(ch_sel          ),
+			.dma_busy(dma_busy      )
 		);
 
 
