@@ -17,7 +17,8 @@ module fwperiph_dma_dbg_bfm #(
 		input[31:0]			dat_w,
 		input				we,
 		input[4:0]          ch_sel,
-		input               dma_busy
+		input               dma_busy,
+		input				dma_done_all
 		);
 
 	fwperiph_dma_dbg_ch ch00();
@@ -54,6 +55,11 @@ module fwperiph_dma_dbg_bfm #(
 					idle_cnt <= idle_cnt + 1;
 					is_busy <= 1;
 				end
+			end else if (dma_done_all) begin
+				// Transfer is complete
+				_notify_complete(ch_sel);
+				idle_cnt <= {2{1'b0}};
+				is_busy <= 0;
 			end else begin
 				idle_cnt <= {2{1'b0}};
 				is_busy <= 1;

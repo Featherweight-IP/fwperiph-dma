@@ -131,6 +131,12 @@ class FwPeriphDmaDbgBfm(object):
     def _set_sz_c(self, channel, idx, ch):
         pass
     
+    @pybfms.export_task(pybfms.uint8_t)
+    def _notify_complete(self, channel):
+        ch_reg : FwPeriphDmaDbgBfm.Channel = self.channels[channel]
+        ch_reg.csr &= 0xFFFFFFFE # Clear EN
+        self._update_channel(channel, ch_reg)
+    
     @pybfms.export_task(pybfms.uint32_t)
     def _set_parameters(self, n_channels):
         pass

@@ -17,7 +17,8 @@ module fwperiph_dma_dbg #(
 		input[31:0]			dat_w,
 		input[31:0]			we,
 		input[4:0]			ch_sel,
-		input				dma_busy
+		input				dma_busy,
+		input				dma_done_all
 		);
 
 	// Empty
