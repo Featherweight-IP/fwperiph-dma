@@ -21,7 +21,19 @@ module fwperiph_dma_dbg #(
 		input				dma_done_all
 		);
 
-	// Empty
+`ifdef FWPERIPH_DMA_DBG_MODULE
+`FWPERIPH_DMA_DBG_MODULE #(
+			.ch_count(ch_count)
+		) u_dbg (
+			.clock(			clock),
+			.adr(			adr),
+			.dat_w(			dat_w),
+			.we(			we),
+			.ch_sel(		ch_sel),
+			.dma_busy(		dma_busy),
+			.dma_done_all(	dma_done_all)
+		);
+`endif
 
 endmodule
 

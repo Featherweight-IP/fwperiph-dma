@@ -5,10 +5,11 @@ DV_COMMON_DIR := $(abspath $(TEST_DIR)/../common)
 
 MKDV_PLUGINS += pybfms cocotb
 
-PYBFMS_MODULES += wishbone_bfms
+PYBFMS_MODULES += wishbone_bfms event_bfms
 
 TOP_MODULE = fwperiph_dma_wb_4_full_chan_tb
-MKDV_COCOTB_MODULE = fwperiph_dma_tests.regtest
+MKDV_TEST ?= regtest
+MKDV_COCOTB_MODULE = fwperiph_dma_tests.$(MKDV_TEST)
 
 MKDV_VL_SRCS += $(TEST_DIR)/fwperiph_dma_wb_4_full_chan_tb.sv
 

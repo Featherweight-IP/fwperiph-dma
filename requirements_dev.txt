@@ -1,6 +1,10 @@
 
+# pyvsc
 
+-e git+ssh://git@github.com/fvutils/pyvsc.git#egg=pyvsc
 -e git+ssh://git@github.com/fvutils/mkdv.git#egg=mkdv
 -e git+ssh://git@github.com/pybfms/pybfms.git#egg=pybfms
+-e git+ssh://git@github.com/pybfms/pybfms_event.git#egg=pybfms_event
 -e git+ssh://git@github.com/pybfms/pybfms_wishbone.git#egg=pybfms_wishbone
+-e git+ssh://git@github.com/pybfms/pybfms_generic_sram.git#egg=pybfms_generic_sram
 

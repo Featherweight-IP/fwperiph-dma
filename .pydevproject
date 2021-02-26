@@ -12,6 +12,7 @@
         <path>/${PROJECT_DIR_NAME}/verilog/dv/common/python</path>
         <path>/${PROJECT_DIR_NAME}/verilog/dbg/python</path>
         <path>/${PROJECT_DIR_NAME}/packages/pybfms/src</path>
+        <path>/${PROJECT_DIR_NAME}/packages/pybfms-event/src</path>
     </pydev_pathproperty>
     
 </pydev_project>

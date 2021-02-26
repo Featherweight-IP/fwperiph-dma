@@ -68,7 +68,15 @@ module fwperiph_dma_wb_4_full_chan_tb(input clock);
 			.reset(							reset),
 			`WB_CONNECT(, bfm2reg_)
 			);
-		
+
+	event_bfm #(
+			.WIDTH(1)
+		) u_irq (
+			.clock(clock),
+			.reset(reset),
+			.data(inta_o)
+		);
+	
 	fwperiph_dma_wb #(
 			// chXX_conf = { CBUF, ED, ARS, EN }
 			.ch_count(4),
