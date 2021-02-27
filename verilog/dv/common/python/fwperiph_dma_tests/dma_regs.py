@@ -31,25 +31,25 @@ class DmaRegs(object):
         return await self.reg_bfm.read(self.base_addr+4)
     
     async def write_int_msk_a(self, value):
-        await self.reg_bfm.write(self.base_addr+4, value)
+        await self.reg_bfm.write(self.base_addr+4, value, 0xF)
         
     async def read_int_msk_b(self):
         return await self.reg_bfm.read(self.base_addr+8)
     
     async def write_int_msk_b(self, value):
-        await self.reg_bfm.write(self.base_addr+8, value)
+        await self.reg_bfm.write(self.base_addr+8, value, 0xF)
         
     async def read_int_src_a(self):
         return await self.reg_bfm.read(self.base_addr+0xC)
     
     async def write_int_src_a(self, value):
-        await self.reg_bfm.write(self.base_addr+0xC, value)
+        await self.reg_bfm.write(self.base_addr+0xC, value, 0xF)
         
     async def read_int_src_b(self):
         return await self.reg_bfm.read(self.base_addr+0x10)
     
     async def write_int_src_b(self, value):
-        await self.reg_bfm.write(self.base_addr+0x10, value)
+        await self.reg_bfm.write(self.base_addr+0x10, value, 0xF)
         
     def channel(self, num) -> DmaChannelRegs:
         return DmaChannelRegs(

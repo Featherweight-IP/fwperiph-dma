@@ -11,7 +11,11 @@ ifeq (,$(findstring $(FWPERIPH_DMA_RTLDIR), $(MKDV_INCLUDED_DEFS)))
 MKDV_INCLUDED_DEFS += $(FWPERIPH_DMA_RTLDIR)
 MKDV_VL_INCDIRS += $(FWPERIPH_DMA_RTLDIR)
 MKDV_VL_SRCS += $(wildcard $(FWPERIPH_DMA_RTLDIR)/*.v)
-endif
+
+MKDV_VL_BB_SRCS += $(FWPERIPH_DMA_RTLDIR)/fwperiph_dma_dbg.v
+
+include $(PACKAGES_DIR)/fwprotocol-defs/verilog/rtl/defs_rules.mk
+endif # !INCLUDED
 
 else # Rules
 

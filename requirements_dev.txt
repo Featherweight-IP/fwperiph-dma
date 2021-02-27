@@ -1,6 +1,8 @@
 
 # pyvsc
 
+vlsim
+
 -e git+ssh://git@github.com/fvutils/pyvsc.git#egg=pyvsc
 -e git+ssh://git@github.com/fvutils/mkdv.git#egg=mkdv
 -e git+ssh://git@github.com/pybfms/pybfms.git#egg=pybfms

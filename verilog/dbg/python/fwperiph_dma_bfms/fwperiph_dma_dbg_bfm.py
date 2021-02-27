@@ -84,11 +84,11 @@ class FwPeriphDmaDbgBfm(object):
             self._set_src_s(channel, 
                 "0x%08x (%s)" % (
                     ch_regs.src, 
-                    "inc" if ch_regs.csr & 4 else "fix"))
+                    "inc" if (ch_regs.csr & 0x08) != 0 else "fix"))
             self._set_dst_s(channel, 
                 "0x%08x (%s)" % (
                     ch_regs.dst, 
-                    "inc" if ch_regs.csr & 2 else "fix"))
+                    "inc" if (ch_regs.csr & 0x10) != 0 else "fix"))
 
             self._set_sz_s(channel, 
                 "%d (burst %d)" % (

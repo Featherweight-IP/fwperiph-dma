@@ -68,8 +68,8 @@ class DmaChannelRegs(object):
             
         def value(self) -> int:
             return (
-                self.chk_sz
-                | (self.tot_sz << 16))
+                self.tot_sz
+                | (self.chk_sz << 16))
             
         def __int__(self) -> int:
             return self.value()
@@ -82,6 +82,7 @@ class DmaChannelRegs(object):
         
     async def read_csr(self) -> 'DmaChannelRegs.CSR':
         value = await self.reg_bfm.read(self.base_addr)
+        print("read_csr: @" + hex(self.base_addr) + " = " + hex(value))
         return DmaChannelRegs.CSR(value)
 
     async def write_csr(self, val : 'DmaChannelRegs.CSR'):
@@ -92,7 +93,7 @@ class DmaChannelRegs(object):
         return DmaChannelRegs.SZ(value)
 
     async def write_sz(self, val):
-        await self.reg_bfm.write(self.base_addr+4, int(val))
+        await self.reg_bfm.write(self.base_addr+4, int(val), 0xF)
 
 
 

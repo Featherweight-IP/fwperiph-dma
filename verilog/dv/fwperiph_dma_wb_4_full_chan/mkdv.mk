@@ -4,6 +4,10 @@ TEST_DIR := $(dir $(MKDV_MK))
 DV_COMMON_DIR := $(abspath $(TEST_DIR)/../common)
 
 MKDV_PLUGINS += pybfms cocotb
+MKDV_TIMEOUT ?= 10ms
+
+VLSIM_CLKSPEC += clock=10ns
+VLSIM_OPTIONS += -Wno-fatal
 
 PYBFMS_MODULES += wishbone_bfms event_bfms
 

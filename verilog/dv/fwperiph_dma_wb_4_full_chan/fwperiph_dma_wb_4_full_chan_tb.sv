@@ -35,7 +35,7 @@ module fwperiph_dma_wb_4_full_chan_tb(input clock);
 	`include "iverilog_control.svh"
 `endif
 	
-	reg reset = 0;
+	reg reset /* verilator public */ = 0;
 	reg[7:0]		rst_cnt = 0;
 	
 	always @(posedge clock) begin
@@ -100,28 +100,76 @@ module fwperiph_dma_wb_4_full_chan_tb(input clock);
 			.inta_o(				inta_o), 
 			.intb_o( 				intb_o)
 			);
-`ifdef HAVE_BIND
-`else
-		`BINDINST_FWPERIPH_DMA_DBG(dut_dbg, 4, u_dut);
-`endif
+//`ifdef HAVE_BIND
+//`else
+//		`BINDINST_FWPERIPH_DMA_DBG(dut_dbg, 4, u_dut);
+//`endif
+
+	reg i0_state = 0;
+	reg i0_ack = 0;
+	assign duti0_ack = i0_ack;
+	assign duti0_dat_r = {32{1'b0}};
+	always @(posedge clock) begin
+		if (reset) begin
+			i0_state <= 0;
+			i0_ack <= 0;
+		end else begin
+			case (i0_state)
+				0: begin
+					if (duti0_cyc && duti0_stb) begin
+						i0_state <= 1;
+						i0_ack <= 1;
+					end
+				end
+				1: begin
+					i0_ack <= 0;
+					i0_state <= 0;
+				end
+			endcase
+		end
+	end
 	
-	wb_target_bfm #(
-			.ADDR_WIDTH(32),
-			.DATA_WIDTH(32)
-			) u_i0_bfm (
-			.clock(						clock),
-			.reset(						reset),
-			`WB_CONNECT(, dut2i0_)
-			);	
+	reg i1_state = 0;
+	reg i1_ack = 0;
+	assign duti1_ack = i1_ack;
+	assign duti1_dat_r = {32{1'b0}};
+	always @(posedge clock) begin
+		if (reset) begin
+			i1_state <= 0;
+			i1_ack <= 0;
+		end else begin
+			case (i1_state)
+				0: begin
+					if (duti1_cyc && duti1_stb) begin
+						i1_state <= 1;
+						i1_ack <= 1;
+					end
+				end
+				1: begin
+					i1_ack <= 0;
+					i1_state <= 0;
+				end
+			endcase
+		end
+	end
 	
-	wb_target_bfm #(
-			.ADDR_WIDTH(32),
-			.DATA_WIDTH(32)
-			) u_i1_bfm (
-			.clock(						clock),
-			.reset(						reset),
-			`WB_CONNECT(, dut2i1_)
-			);	
+//	wb_target_bfm #(
+//			.ADDR_WIDTH(32),
+//			.DATA_WIDTH(32)
+//			) u_i0_bfm (
+//			.clock(						clock),
+//			.reset(						reset),
+//			`WB_CONNECT(, duti0_)
+//			);	
+//	
+//	wb_target_bfm #(
+//			.ADDR_WIDTH(32),
+//			.DATA_WIDTH(32)
+//			) u_i1_bfm (
+//			.clock(						clock),
+//			.reset(						reset),
+//			`WB_CONNECT(, duti1_)
+//			);	
 
 
 endmodule
