@@ -82,7 +82,6 @@ class DmaChannelRegs(object):
         
     async def read_csr(self) -> 'DmaChannelRegs.CSR':
         value = await self.reg_bfm.read(self.base_addr)
-        print("read_csr: @" + hex(self.base_addr) + " = " + hex(value))
         return DmaChannelRegs.CSR(value)
 
     async def write_csr(self, val : 'DmaChannelRegs.CSR'):
@@ -94,6 +93,18 @@ class DmaChannelRegs(object):
 
     async def write_sz(self, val):
         await self.reg_bfm.write(self.base_addr+4, int(val), 0xF)
+        
+    async def read_src_addr(self) -> int:
+        return await self.reg_bfm.read(self.base_addr+0x08)
+    
+    async def write_src_addr(self, value) -> int:
+        await self.reg_bfm.write(self.base_addr+0x08, value, 0xF)
+        
+    async def read_dst_addr(self) -> int:
+        return await self.reg_bfm.read(self.base_addr+0x10)
+    
+    async def write_dst_addr(self, value) -> int:
+        await self.reg_bfm.write(self.base_addr+0x10, value, 0xF)
 
 
 

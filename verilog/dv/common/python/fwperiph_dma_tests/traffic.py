@@ -123,7 +123,9 @@ class TrafficTest(object):
         print("INC_SRC: " + str(csr.inc_src) + " INC_DST: " + str(csr.inc_dst))
         csr.en = 1
         await ch.write_csr(csr)
-        
+
+        await ch.write_src_addr(0x00000000 | int(channel) << 16)
+        await ch.write_dst_addr(0x80000000 | int(channel) << 16)
         
         # TODO: start xfer
 

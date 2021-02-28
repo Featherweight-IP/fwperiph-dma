@@ -4,6 +4,9 @@ FWPERIPH_DMA_DIR := $(abspath $(SYNTH_DIR)/../../..)
 PACKAGES_DIR ?= $(FWPERIPH_DMA_DIR)/packages
 DV_MK := $(shell PATH=$(PACKAGES_DIR)/python/bin:$(PATH) python -m mkdv mkfile)
 
+QUARTUS_FAMILY ?= "Cyclone V"
+QUARTUS_DEVICE ?= 5CGXFC7C7F23C8
+
 TOP_MODULE = fwperiph_dma_wb
 #MKDV_VL_SRCS += $(wildcard $(FWPERIPH_DMA_DIR)/verilog/rtl/*.v)
 #MKDV_VL_INCDIRS += $(FWPERIPH_DMA_DIR)/verilog/rtl

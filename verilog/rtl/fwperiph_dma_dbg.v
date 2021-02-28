@@ -9,7 +9,7 @@
  * 
  * TODO: Add module documentation
  */
-// TODO: (* keep *)
+// (* keep, blackbox, syn_black_box *)
 module fwperiph_dma_dbg #(
 		parameter ch_count=1
 		) (

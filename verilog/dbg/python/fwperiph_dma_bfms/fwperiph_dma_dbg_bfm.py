@@ -23,7 +23,6 @@ class FwPeriphDmaDbgBfm(object):
             pass
     
     def __init__(self):
-        print("FwPeriphDmaDbgBfm")
         self.n_channels = 0
         self.channels : FwPeriphDmaDbgBfm.Channel = []
         for i in range(32):
