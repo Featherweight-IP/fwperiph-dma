@@ -1,0 +1,24 @@
+/*******************************************************************************
+                             wb_dma_c_impl_uvm.pss
+*******************************************************************************/
+
+extend action wb_dma_c::mem2mem_a {
+	exec body SV = """
+	begin
+		wb_dma_descriptor desc = wb_dma_descriptor::create();
+		
+		start_item(desc);
+		assert(desc.randomize() with {
+			channel == {{channel}};
+			mode == 0; // perform memory-to-memory transfer
+			inc_src == 1;
+			inc_dst == 1;
+			tot_sz == {{tot_sz}};
+			trn_sz == {{trn_sz}};
+		});
+		finish_item(desc);
+	end
+	
+	""";
+}
+

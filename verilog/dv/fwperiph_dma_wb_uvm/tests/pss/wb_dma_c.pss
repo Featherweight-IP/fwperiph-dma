@@ -1,0 +1,34 @@
+
+component wb_dma_c {
+  
+  action mem2mem_a {
+    rand bit[6]    channel;
+    rand bit[12]   tot_sz;
+    rand bit[3]    trn_sz;
+
+    constraint channel in [0..7];
+    constraint tot_sz in [1..256];
+    constraint trn_sz in [1, 2, 4];
+    
+    covergroup {
+      channel_cp : coverpoint channel {
+        bins channels[] = [0..7];
+      }
+
+      tot_sz_cp : coverpoint tot_sz {
+        bins small_sz[] = [1, 4];
+        bins med_sz[16] = [5..254];
+        bins large_sz[] = [255, 256];
+      }
+
+      trn_sz_cp : coverpoint trn_sz {
+        bins sz[] = [1, 2, 4];
+      }
+
+      tot_trn_sz_cross : cross tot_sz_cp, trn_sz_cp;
+
+    } channel_sz_cg;
+  }
+}
+
+
