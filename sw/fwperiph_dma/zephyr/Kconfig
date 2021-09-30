@@ -1,5 +1,5 @@
 
-menuconfig FW_PERIPH_DMA
+menuconfig FWPERIPH_DMA
 		bool "Featherweight IP Peripheral DMA Engine"
 		default y
 		help

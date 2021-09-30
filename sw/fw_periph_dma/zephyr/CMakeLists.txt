@@ -1,3 +1,0 @@
-
-zephyr_library_sources_ifdef(CONFIG_FW_PERIPH_DMA fw_periph_dma.c)
-

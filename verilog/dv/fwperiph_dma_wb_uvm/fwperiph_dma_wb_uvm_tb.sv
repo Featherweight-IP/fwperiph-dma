@@ -11,6 +11,7 @@
  */
 module fwperiph_dma_wb_uvm_tb(input clock);
 	import uvm_pkg::*;
+	import wb_dma_tests_pkg::*;
 	
 	import wb_master_agent_pkg::*;
 	import wb_slave_agent_pkg::*;
@@ -27,6 +28,7 @@ module fwperiph_dma_wb_uvm_tb(input clock);
 	    clock_r <= ~clock_r;
 	end
     end
+    assign clock = clock_r;
 `endif
 	
 	reg reset /* verilator public */ = 0;
@@ -113,9 +115,35 @@ module fwperiph_dma_wb_uvm_tb(input clock);
 			.clock(					clock), 
 			.reset(					reset),
 
-			`WB_CONNECT(rt_, bfm2reg_),
-			`WB_CONNECT(i0_, duti0_),
-			`WB_CONNECT(i1_, duti1_),
+			.rt_adr(bfm2s0.ADR),
+			.rt_dat_w(bfm2s0.DAT_W),
+			.rt_dat_r(bfm2s0.DAT_R),
+			.rt_cyc(bfm2s0.CYC),
+			.rt_err(bfm2s0.ERR),
+			.rt_sel(bfm2s0.SEL),
+			.rt_stb(bfm2s0.STB),
+			.rt_ack(bfm2s0.ACK),
+			.rt_we(bfm2s0.WE),
+			
+			.i0_adr(m02bfm.ADR),
+			.i0_dat_w(m02bfm.DAT_W),
+			.i0_dat_r(m02bfm.DAT_R),
+			.i0_cyc(m02bfm.CYC),
+			.i0_err(m02bfm.ERR),
+			.i0_sel(m02bfm.SEL),
+			.i0_stb(m02bfm.STB),
+			.i0_ack(m02bfm.ACK),
+			.i0_we(m02bfm.WE),
+			
+			.i1_adr(m12bfm.ADR),
+			.i1_dat_w(m12bfm.DAT_W),
+			.i1_dat_r(m12bfm.DAT_R),
+			.i1_cyc(m12bfm.CYC),
+			.i1_err(m12bfm.ERR),
+			.i1_sel(m12bfm.SEL),
+			.i1_stb(m12bfm.STB),
+			.i1_ack(m12bfm.ACK),
+			.i1_we(m12bfm.WE),			
 
 			.dma_req_i(				dma_req_i), 
 			.dma_ack_o(				dma_ack_o), 

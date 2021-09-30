@@ -12,7 +12,7 @@
 #include <init.h>
 #include <devicetree.h>
 #include <drivers/dma.h>
-#include "fw_periph_dma.h"
+#include "fwperiph_dma.h"
 
 static void fw_periph_dma_isr(const struct device *dev) {
 	const fw_periph_dma_cfg_t *const dma_cfg =

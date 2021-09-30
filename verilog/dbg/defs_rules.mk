@@ -11,7 +11,7 @@ ifeq (,$(findstring $(FWPERIPH_DMA_DBGDIR), $(MKDV_INCLUDED_DEFS)))
 MKDV_INCLUDED_DEFS += $(FWPERIPH_DMA_DBGDIR)
 MKDV_VL_INCDIRS += $(FWPERIPH_DMA_DBGDIR)
 
-MKDV_VL_SRCS += $(wildcard $(FWPERIPH_DMA_RTLDIR)/*.v)
+MKDV_VL_SRCS += $(wildcard $(FWPERIPH_DMA_DBGDIR)/*.v)
 
 # Enable BFM instantiation in the debug-module socket
 MKDV_VL_DEFINES += FWPERIPH_DMA_DBG_MODULE=fwperiph_dma_dbg_bfm

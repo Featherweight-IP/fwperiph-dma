@@ -8,12 +8,9 @@ MKDV_TOOL ?= icarus
 
 ifneq (1,$(RULES))
 
-MKDV_VL_SRCS += $(wildcard $(FWPERIPH_DMA_DIR)/verilog/rtl/*.v)
-MKDV_VL_INCDIRS += $(FWPERIPH_DMA_DIR)/verilog/rtl
-MKDV_VL_INCDIRS += $(PACKAGES_DIR)/fwprotocol-defs/src/sv
-
 MKDV_PYTHONPATH += $(DV_COMMON_DIR)/python
 
+include $(FWPERIPH_DMA_DIR)/verilog/rtl/defs_rules.mk
 include $(FWPERIPH_DMA_DIR)/verilog/dbg/defs_rules.mk
 
 include $(DV_MK)
