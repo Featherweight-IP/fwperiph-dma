@@ -25,8 +25,8 @@ package:
         - name: pybfms_event
           url: https://github.com/pybfms/pybfms_event.git
           type: python
-        - name: pybfms_wishbone
-          url: https://github.com/pybfms/pybfms_wishbone.git
+        - name: pybfms-wishbone
+          url: https://github.com/pybfms/pybfms-wishbone.git
           type: python
         - name: pybfms_generic_sram
           url: https://github.com/pybfms/pybfms_generic_sram.git
