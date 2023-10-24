@@ -1,0 +1,19 @@
+CAPI=2:
+
+name: featherweight-ip::fwperiph-dma.wb-uvmf-env:0.0.1
+
+filesets:
+  hvl:
+    files:
+      - "sv-uvm ? (fwperiph_dma_wb_env_pkg.sv)":
+          include_path: "src"
+    file_type: verilogSource
+    depend:
+      - siemens:uvmf:base_pkg
+      - featherweight-ip::fwperiph-dma.wb-uvmf.wb_if
+
+targets:
+  default:
+    filesets:
+      - hvl
+

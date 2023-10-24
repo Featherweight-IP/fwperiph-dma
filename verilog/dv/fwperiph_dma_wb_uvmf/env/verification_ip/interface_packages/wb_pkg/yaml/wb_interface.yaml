@@ -1,0 +1,29 @@
+uvmf:
+  interfaces:
+    wb:
+      clock: clock
+      config_constraints: []
+      config_vars: []
+      existing_library_component: 'True'
+      gen_inbound_streaming_driver: 'False'
+      hdl_pkg_parameters: []
+      hdl_typedefs: []
+      hvl_pkg_parameters: []
+      hvl_typedefs: []
+      parameters: []
+      ports:
+      - dir: output
+        name: addr
+        reset_value: '''b0'
+        width: '32'
+      reset: reset
+      reset_assertion_level: 'False'
+      transaction_constraints: []
+      transaction_vars:
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: addr
+        type: bit[31:0]
+        unpacked_dimension: ''
+      use_dpi_link: 'False'

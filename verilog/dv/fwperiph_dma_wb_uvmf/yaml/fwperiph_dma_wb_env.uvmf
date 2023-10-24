@@ -1,0 +1,6 @@
+uvmf:
+  environments:
+    fwperiph_dma_wb:
+      agents:
+      - name: reg_initiator
+        type: wb

@@ -1,0 +1,9 @@
+needs:
+# pragma uvmf custom needs_additional begin
+# pragma uvmf custom needs_additional end
+  - hvl.compile
+  - hdl.compile
+# pragma uvmf custom extra_top_compile begin
+# pragma uvmf custom extra_top_compile end
+# pragma uvmf custom compile_additional begin
+# pragma uvmf custom compile_additional end

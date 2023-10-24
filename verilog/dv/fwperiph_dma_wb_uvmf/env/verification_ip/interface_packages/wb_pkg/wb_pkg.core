@@ -1,0 +1,19 @@
+CAPI=2:
+
+name: featherweight-ip::fwperiph-dma.wb-uvmf.wb_if:0.0.1
+
+filesets:
+  hvl:
+    files:
+      - wb_pkg_hdl.sv
+      - wb_pkg.sv
+      - src/wb_driver_bfm.sv
+      - src/wb_monitor_bfm.sv
+    file_type: verilogSource
+    depend:
+      - siemens:uvmf:base_pkg
+
+targets:
+  default:
+    filesets:
+      - hvl

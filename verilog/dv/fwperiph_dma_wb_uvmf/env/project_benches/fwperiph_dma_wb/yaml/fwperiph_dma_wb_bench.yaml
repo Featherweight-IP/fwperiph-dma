@@ -1,0 +1,15 @@
+uvmf:
+  benches:
+    fwperiph_dma_wb:
+      active_passive:
+      - bfm_name: reg_initiator
+        value: ACTIVE
+      active_passive_default: ACTIVE
+      clock_half_period: 5ns
+      clock_phase_offset: 9ns
+      existing_library_component: 'True'
+      interface_params: []
+      reset_assertion_level: 'False'
+      reset_duration: 200ns
+      top_env: fwperiph_dma_wb
+      use_dpi_link: 'False'

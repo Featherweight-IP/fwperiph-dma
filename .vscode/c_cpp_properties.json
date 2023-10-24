@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "name": "Default",
+            "includePath": [
+                "${default}",
+                "packages/debug-mgr/src/include",
+                "packages/vsc-dm/src/include",
+                "packages/vsc-solvers/src/include",
+                "packages/zuspec-arl-dm/src/include",
+                "packages/zuspec-arl-eval/src/include",
+                "packages/zuspec-fe-parser/src/include",
+                "packages/zuspec-parser/build/include",
+                "packages/zuspec-parser/src",
+                "packages/zuspec-parser/build/src/antlr4cpp_generated_src/PSSParser",
+                "packages/zuspec-parser/build/src/antlr4cpp_generated_src/PSSLexer"
+            ],
+            "defines": [
+                "${default}"
+            ],
+            "macFrameworkPath": [
+                "${default}"
+            ],
+            "forcedInclude": [
+                "${default}",
+                "additional/paths"
+            ],
+            "compileCommands": "${default}",
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "${default}",
+                "path": [
+                    "${default}"
+                ]
+            },
+            "intelliSenseMode": "${default}",
+            "cStandard": "${default}",
+            "cppStandard": "${default}",
+            "compilerPath": "${default}",
+            "C_Cpp.enhancedColorization": "Enabled"
+        }
+    ],
+    "version": 4
+}

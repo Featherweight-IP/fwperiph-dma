@@ -1,0 +1,13 @@
+uvmf:
+  interfaces:
+    wb:
+      clock: clock
+      reset: reset
+      ports:
+        - name: addr
+          width: "32"
+          dir: "output"
+      transaction_vars:
+        - name: addr
+          type: "bit[31:0]"
+

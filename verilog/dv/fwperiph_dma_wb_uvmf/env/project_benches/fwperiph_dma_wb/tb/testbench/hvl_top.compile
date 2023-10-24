@@ -1,0 +1,15 @@
+incdir:
+# pragma uvmf custom incdir_additional begin
+# pragma uvmf custom incdir_additional end
+  - ${uvm_path}/src
+  - .
+needs:
+# pragma uvmf custom needs_additional begin
+# pragma uvmf custom needs_additional end
+  - ../tests/fwperiph_dma_wb_tests_pkg.compile
+src:
+# pragma uvmf custom src_additional begin
+# pragma uvmf custom src_additional end
+  - hvl_top.sv
+# pragma uvmf custom compile_additional begin
+# pragma uvmf custom compile_additional end

@@ -1,0 +1,8 @@
+needs:
+# pragma uvmf custom needs_additional begin
+# pragma uvmf custom needs_additional end
+  - ../tb/testbench/hvl_top.compile
+# pragma uvmf custom compile_additional begin
+# pragma uvmf custom compile_additional end
+# pragma uvmf custom extra begin
+# pragma uvmf custom extra end

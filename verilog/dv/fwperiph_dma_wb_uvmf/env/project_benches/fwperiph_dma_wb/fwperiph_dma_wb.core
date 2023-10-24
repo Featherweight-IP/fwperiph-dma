@@ -1,0 +1,22 @@
+CAPI=2:
+
+name: featherweight-ip::fwperiph-dma.wb-uvmf-tb:0.0.1
+
+filesets:
+    hvl:
+        files:
+            - "sv-uvm ? (tb/parameters/fwperiph_dma_wb_parameters_pkg.sv)"
+            - "sv-uvm ? (tb/sequences/fwperiph_dma_wb_sequences_pkg.sv)":
+                include_path: tb/sequences/src
+            - "sv-uvm ? (tb/tests/fwperiph_dma_wb_tests_pkg.sv)":
+                include_path: tb/tests/src
+            - "sv-uvm ? (tb/testbench/hdl_top.sv)"
+            - "sv-uvm ? (tb/testbench/hvl_top.sv)"
+        file_type: verilogSource
+        depend:
+          - featherweight-ip::fwperiph-dma.wb-uvmf-env
+
+targets:
+    default:
+        filesets:
+            - hvl

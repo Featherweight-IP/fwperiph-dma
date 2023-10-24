@@ -1,0 +1,14 @@
+needs:
+# pragma uvmf custom needs_additional begin
+# pragma uvmf custom needs_additional end
+  - $UVMF_HOME/uvmf_base_pkg/uvmf_base_pkg.compile
+  - ../../../../verification_ip/interface_packages/wb_pkg/wb.compile
+  - ../../../../verification_ip/environment_packages/fwperiph_dma_wb_env_pkg/fwperiph_dma_wb_env_pkg.compile
+  - ../parameters/fwperiph_dma_wb_parameters_pkg.compile
+  - ../sequences/fwperiph_dma_wb_sequences_pkg.compile
+src:
+# pragma uvmf custom src_additional begin
+# pragma uvmf custom src_additional end
+  - fwperiph_dma_wb_tests_pkg.sv
+# pragma uvmf custom compile_additional begin
+# pragma uvmf custom compile_additional end

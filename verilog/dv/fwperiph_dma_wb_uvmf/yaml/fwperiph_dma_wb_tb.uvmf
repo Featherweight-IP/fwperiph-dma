@@ -1,0 +1,5 @@
+
+uvmf:
+    benches:
+        fwperiph_dma_wb:
+            top_env: fwperiph_dma_wb

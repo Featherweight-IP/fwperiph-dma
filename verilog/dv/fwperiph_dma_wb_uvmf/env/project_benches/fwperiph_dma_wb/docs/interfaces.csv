@@ -1,0 +1,13 @@
+//----------------------------------------------------------------------
+// Created with uvmf_gen version 2023.3
+//----------------------------------------------------------------------
+// pragma uvmf custom header begin
+// pragma uvmf custom header end
+//----------------------------------------------------------------------
+//----------------------------------------------------------------------
+//
+
+,
+Interface Description, Interface Type, Interface Transaction, Interface Name,
+reg_initiator, wb_driver_bfm wb_monitor_bfm, wb_transaction, wb_pkg_reg_initiator_BFM,
+

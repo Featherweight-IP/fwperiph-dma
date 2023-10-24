@@ -1,0 +1,16 @@
+CAPI=2:
+
+name: featherweight-ip::fwperiph-dma.wb-uvmf:0.0.1
+
+filesets:
+  hvl:
+    depend:
+      - featherweight-ip::fwperiph-dma.wb-uvmf-tb
+      - siemens:uvmf:base_pkg
+      - featherweight-ip::fwprotocol-defs
+
+targets:
+  default:
+    filesets:
+      - hvl
+    
