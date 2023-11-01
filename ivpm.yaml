@@ -1,15 +1,24 @@
 package:
     name: fwperiph-dma
     version: None
-    deps:
-        - name: fwprotocol-defs
-          url: http://github.com/Featherweight-IP/fwprotocol-defs.git
-          type: raw
 
-    dev-deps:
+    setup-deps:
+    - cython
+
+    dep-sets:
+    - name: deps
+      deps:
+      - name: fwprotocol-defs
+        url: http://github.com/Featherweight-IP/fwprotocol-defs.git
+        type: raw
+
+    - name: default-dev
+      deps:
         - name: fwprotocol-defs
           url: http://github.com/Featherweight-IP/fwprotocol-defs.git
           type: raw
+        - name: fusesoc
+          url: https://github.com/olofk/fusesoc.git
         - name: vlsim
           type: python
           src: pypi
@@ -22,9 +31,9 @@ package:
         - name: pybfms
           url: https://github.com/pybfms/pybfms.git
           type: python
-        - name: pybfms_event
-          url: https://github.com/pybfms/pybfms_event.git
-          type: python
+#        - name: pybfms_event
+#          url: https://github.com/pybfms/pybfms_event.git
+#          type: python
         - name: pybfms-wishbone
           url: https://github.com/pybfms/pybfms-wishbone.git
           type: python
@@ -36,4 +45,13 @@ package:
         - name: zephyr
           url: https://github.com/zephyrproject-rtos/zephyr.git
           depth: 1
+        - name: uvmf-core-mkdv
+          url: https://github.com/fvutils/uvmf-core-mkdv.git
+        - name: zuspec
+          url: https://github.com/zuspec/zuspec.git
+          dep-set: default-dev
+        - name: zuspec-sv
+          url: https://github.com/zuspec/zuspec-sv.git
+        - name: cython
+          src: pypi
 

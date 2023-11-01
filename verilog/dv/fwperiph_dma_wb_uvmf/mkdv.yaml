@@ -1,0 +1,147 @@
+#*****************************************************************************
+#* mkdv.yaml
+#*****************************************************************************
+
+# Initialize context variables 
+context_parser: mkdv.parser.default
+
+steps:
+  - name: mkdv.steps.entry
+  
+common:
+  - name: pypyr.steps.default
+    in:
+      defaults:
+        MKDV_TOP_MODULE: [hdl_top,hvl_top]
+#        MKDV_CACHEDIR: cachedir
+#        MKDV_RUNDIR: rundir
+        MKDV_TOOL: mti
+        MKDV_RUN_ARGS: [+UVM_TESTNAME=test_top]
+        
+#  - name: mkdv.steps.pyrun
+#    in:
+#      cmd: tblink_rpc_hdl simplugin dpi
+#      out: TBLINK_RPC_HDL_DPI
+#  - name: mkdv.steps.pyrun
+#    in:
+#      cmd: tblink_rpc_hdl simplugin vpi
+#      out: TBLINK_RPC_HDL_VPI
+#
+#  - name: pypyr.steps.append
+#    in:
+#      append:
+#        list: VLSIM_CLKSPEC
+#        addMe: "clock=10ns"
+  - name: pypyr.steps.append
+    in:
+      append:
+        list: VLSIM_OPTS
+        unpack: True
+        addMe: 
+        - -Wno-fatal
+        - --vpi
+        
+#  - name: pypyr.steps.append
+#    skip: !py MKDV_TOOL == 'iverilog'
+#    in:
+#      append:
+#        list: MKDV_DPI_LIBS
+#        addMe: "{TBLINK_RPC_HDL_DPI}"
+#        
+#  - name: pypyr.steps.append
+#    run: !py MKDV_TOOL == 'iverilog'
+#    in:
+#      append:
+#        list: MKDV_VPI_LIBS
+#        addMe: "{TBLINK_RPC_HDL_VPI}"
+#
+#  - name: pypyr.steps.append
+#    in:
+#      append:
+#        list: MKDV_DPI_LIBS
+#        addMe: "{TBLINK_RPC_HDL_DPI}"
+#        
+#  - name: pypyr.steps.append
+#    in:
+#      append:
+#        list: MKDV_VL_INCDIRS
+#        addMe: "{MKDV_CACHEDIR}"
+
+  - { name: pypyr.steps.set, run: !py MKDV_TOOL == 'iverilog', in: { set: { FILESPEC_FLAG: [vl] } } }
+
+  - name: pypyr.steps.set
+    run: !py MKDV_TOOL == 'vlsim'
+    in:
+      set:
+        FILESPEC_FLAG: [sv]
+
+  - name: pypyr.steps.set
+    run: !py MKDV_TOOL != 'iverilog' and MKDV_TOOL != 'vlsim'
+    in:
+      set:
+        FILESPEC_FLAG: [sv, sv-uvm]
+
+  - name: pypyr.steps.set
+    in:
+      set:
+        COMMON_SETUP_RUN: True
+        
+#********************************************************************  
+#* setup
+#********************************************************************  
+setup:
+  - name: pypyr.steps.call
+    in:
+      call: common
+      
+  #******************************************************************
+  #* Collect source files from .core files
+  #******************************************************************
+  - name: mkdv.steps.filespec
+    in:
+      vlnv: featherweight-ip::fwperiph-dma.wb-uvmf
+      out:
+        - name: MKDV_VL_SRCS
+          type:
+            - verilogSource
+            - systemVerilogSource
+          # TODO: how to obtain substituted variable
+          flags: "sv-uvm"
+#          flags: "{FILESPEC_FLAG}"
+        - name: MKDV_VL_INCDIRS
+          type:
+            - verilogSource
+            - systemVerilogSource
+          # TODO: how to obtain substituted variable
+          flags: "sv-uvm"
+#          flags: "{FILESPEC_FLAG}"
+          include: True
+          
+  - name: mkdv.steps.common_hdl_build
+
+#********************************************************************  
+#* run
+#********************************************************************  
+run:
+  - name: pypyr.steps.call
+    skip: !py "'COMMON_SETUP_RUN' in locals()"
+    in:
+      call: common
+
+      
+  - name: pypyr.steps.append
+    in:
+      append:
+        list: MKDV_RUN_ARGS
+        unpack: True
+        addMe: 
+        - +tblink.launch=python.loopback
+        - +module=tblink_rpc.rt.cocotb
+
+  - name: pypyr.steps.cmd
+    in:
+      cmd: which python3
+
+  - name: mkdv.steps.common_hdl_run
+
+

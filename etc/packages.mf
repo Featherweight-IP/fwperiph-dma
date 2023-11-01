@@ -1,7 +1,0 @@
-#****************************************************************************
-#* packages.mf
-#* Project: fwperiph-dma
-#****************************************************************************
-
-fwprotocol-defs@http://github.com/Featherweight-IP/fwprotocol-defs.git
-

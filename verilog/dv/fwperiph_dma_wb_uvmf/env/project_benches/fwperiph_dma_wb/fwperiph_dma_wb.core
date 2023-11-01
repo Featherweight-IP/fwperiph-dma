@@ -14,6 +14,8 @@ filesets:
             - "sv-uvm ? (tb/testbench/hvl_top.sv)"
         file_type: verilogSource
         depend:
+          - siemens:uvmf:base_pkg
+          - featherweight-ip::fwperiph-dma.wb-uvmf.wb_if
           - featherweight-ip::fwperiph-dma.wb-uvmf-env
 
 targets:

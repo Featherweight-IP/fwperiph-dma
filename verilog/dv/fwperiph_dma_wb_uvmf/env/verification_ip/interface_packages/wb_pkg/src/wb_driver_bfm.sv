@@ -72,7 +72,7 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 initial begin : bfm_vs_agent_parameter_debug
   `uvm_info("CFG", 
-      $psprintf("The BFM at '%m' has the following parameters: ", ),
+      $sformatf("The BFM at '%m' has the following parameters: ", ),
       UVM_DEBUG)
 end
 `endif

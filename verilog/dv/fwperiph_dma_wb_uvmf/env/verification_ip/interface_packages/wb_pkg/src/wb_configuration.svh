@@ -126,7 +126,7 @@ class wb_configuration  extends uvmf_parameterized_agent_configuration_base #(
 // All of the messages from this feature have a UVM messaging id value of "CFG"
 // The transcript or run.log can be parsed to ensure BFM parameter settings match its corresponding agents parameter settings.
     `uvm_info("CFG", 
-              $psprintf("The agent at '%s' is using interface named %s has the following parameters: ", agent_path, interface_name, ),
+              $sformatf("The agent at '%s' is using interface named %s has the following parameters: ", agent_path, interface_name, ),
               UVM_DEBUG)
 
     // pragma uvmf custom initialize begin
