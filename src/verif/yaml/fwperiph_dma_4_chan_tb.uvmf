@@ -1,0 +1,4 @@
+uvmf:
+  benches:
+    fwperiph_dma_4_chan_tb:
+      top_env: fwperiph_dma_4_chan

@@ -1,0 +1,16 @@
+uvmf:
+  environments:
+    fwperiph_dma_4_chan:
+      agents:
+        - name: reg_init
+          type: fwvip_wb
+        - name: mem_init
+          type: fwvip_wb
+      
+      register_model:
+        reg_model_package: "fwperiph_dma_ral"
+        reg_block_class: "fwperiph_dma_map"
+        maps:
+          - name: "reg_map"
+            interface: "reg_init"
+      

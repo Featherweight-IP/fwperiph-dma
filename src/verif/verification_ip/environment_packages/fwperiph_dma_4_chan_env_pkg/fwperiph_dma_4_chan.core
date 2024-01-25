@@ -1,0 +1,43 @@
+CAPI=2:
+
+# pragma uvmf custom corefile_head_additional_items begin
+# pragma uvmf custom corefile_head_additional_items end
+
+name: uvmf:environments:fwperiph_dma_4_chan
+
+filesets:
+  hvl:
+    files:
+# pragma uvmf custom hvl_fileset_additional_items_pre begin
+    - "sv-uvm ? (registers/fwperiph_dma_ral.sv)":
+         include_path: "registers"
+# pragma uvmf custom hvl_fileset_additional_items_pre end
+    - "sv-uvm ? (fwperiph_dma_4_chan_env_pkg.sv)":
+         include_path: "."
+# pragma uvmf custom hvl_fileset_additional_items_post begin
+# pragma uvmf custom hvl_fileset_additional_items_post end
+    file_type: systemVerilogSource
+    depend:
+# pragma uvmf custom hvl_fileset_depend_additional_items_pre begin
+# pragma uvmf custom hvl_fileset_depend_additional_items_pre end
+# pragma uvmf custom hvl_fileset_depend_additional_items_pre_agents begin
+# pragma uvmf custom hvl_fileset_depend_additional_items_pre_agents end
+      - uvmf:interfaces:fwvip_wb
+# pragma uvmf custom hvl_fileset_depend_additional_items_post_agents begin
+# pragma uvmf custom hvl_fileset_depend_additional_items_post_agents end
+      - ":uvmf:base_pkg"
+# pragma uvmf custom hvl_fileset_depend_additional_items_post begin
+# pragma uvmf custom hvl_fileset_depend_additional_items_post end
+
+# pragma uvmf custom filesets_additional_items begin
+# pragma uvmf custom filesets_additional_items end
+
+# TODO: add in DPI filesets
+
+targets:
+  default:
+    filesets:
+      - hvl
+
+# pragma uvmf custom corefile_tail_additional_items begin
+# pragma uvmf custom corefile_tail_additional_items end

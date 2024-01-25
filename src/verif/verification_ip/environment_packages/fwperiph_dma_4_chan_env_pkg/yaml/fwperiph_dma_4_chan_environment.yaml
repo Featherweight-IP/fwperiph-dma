@@ -1,0 +1,34 @@
+uvmf:
+  environments:
+    fwperiph_dma_4_chan:
+      agents:
+      - initiator_responder: INITIATOR
+        name: reg_init
+        type: fwvip_wb
+      - initiator_responder: INITIATOR
+        name: mem_init
+        type: fwvip_wb
+      analysis_components: []
+      analysis_exports: []
+      analysis_ports: []
+      config_constraints: []
+      config_vars: []
+      existing_library_component: 'True'
+      hvl_pkg_parameters: []
+      non_uvmf_components: []
+      parameters: []
+      qvip_memory_agents: []
+      register_model:
+        maps:
+        - interface: reg_init
+          interface_type: uvmf
+          name: reg_map
+          qvip_agent: 'False'
+        reg_adapter_class: fwvip_wb2reg_adapter
+        reg_block_class: fwperiph_dma_map
+        reg_model_package: fwperiph_dma_ral
+        use_adapter: 'True'
+        use_explicit_prediction: 'True'
+      scoreboards: []
+      subenvs: []
+      tlm_connections: []

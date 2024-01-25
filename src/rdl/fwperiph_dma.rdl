@@ -1,0 +1,201 @@
+/****************************************************************************
+ * fwperiph_dma.rdl
+ ****************************************************************************/
+reg fwperiph_dma_csr {
+    name = "Main CSR";
+    regwidth = 32;
+
+    field {
+        hw = rw;
+        sw = rw;
+        desc = "Set to pause all DMA transfers";
+    } pause;
+};
+
+reg fwperiph_dma_int_msk_a {
+    name = "INT_MSK_A";
+    desc = "Masks active interrupts connected to interrupt A";
+
+    field {
+        hw = r;
+        sw = rw;
+    } mask[31:0];
+};
+
+reg fwperiph_dma_int_msk_b {
+    name = "INT_MSK_B";
+    desc = "Masks active interrupts connected to interrupt B";
+
+    field {
+        hw = r;
+        sw = rw;
+    } mask[31:0];
+};
+
+reg fwperiph_dma_int_src_a {
+    name = "INT_SRC_A";
+    desc = "Selects channels that raise interrupts on IRQ A";
+
+    field {
+        hw = r;
+        sw = rw;
+    } source[31:0];
+};
+
+reg fwperiph_dma_int_src_b {
+    name = "INT_SRC_B";
+    desc = "Selects channels that raise interrupts on IRQ B";
+
+    field {
+        hw = r;
+        sw = rw;
+    } source[31:0];
+};
+
+reg fwperiph_dma_channel_csr {
+    field {
+        desc = "Channel enable";
+        hw = rw;
+        sw = rw;
+    } en;
+    field {
+        desc = "Selects destination interface";
+        hw = rw;
+        sw = rw;
+    } dst_sel;
+    field {
+        desc = "Selects source interface";
+        hw = rw;
+        sw = rw;
+    } src_sel;
+    field {
+        desc = "Enables destination-address increment";
+        hw = rw;
+        sw = rw;
+    } inc_dst;
+    field {
+        desc = "Enables source-address increment";
+        hw = rw;
+        sw = rw;
+    } inc_src;
+    field {
+        desc = "Selects mode: 0=normal 1=peripheral-controlled";
+        hw = rw;
+        sw = rw;
+    } mode;
+    field {
+        desc = "Auto-restart";
+        hw = rw;
+        sw = rw;
+    } ars;
+    field {
+        desc = "Selects use of external descriptor";
+        hw = rw;
+        sw = rw;
+    } use_ed;
+    field {
+        desc = "Enables write-back of the remaining size";
+        hw = rw;
+        sw = rw;
+    } sz_wb;
+    field {
+        desc = "Halts current transfer";
+        hw = rw;
+        sw = w;
+    } stop;
+    field {
+        desc = "Indicates channel is busy";
+        hw = w;
+        sw = r;
+    } busy;
+    field {
+        desc = "Transfer is complete";
+        hw = w;
+        sw = r;
+    } done;
+    field {
+        desc = "DMA channel stopped due to error";
+        hw = w;
+        sw = r;
+    } err;
+    field {
+        desc = "DMA channel priority";
+        hw = w;
+        sw = r;
+    } priority[15:13];
+};
+
+reg fwperiph_dma_channel_sz {
+    field {
+        desc = "Total transfer size (in words)";
+        hw = rw;
+        sw = rw;
+    } tot_sz[11:0];
+    field {
+        desc = "Chunk size";
+        hw = rw;
+        sw = rw;
+    } chk_sz[24:16];
+};
+
+reg fwperiph_dma_channel_addr {
+    field {
+        desc = "Address";
+        hw = r;
+        sw = rw;
+    } addr[31:2];
+};
+
+reg fwperiph_dma_channel_mask {
+    field {
+        desc = "Address mask";
+        hw = r;
+        sw = rw;
+    } mask[31:4];
+};
+
+reg fwperiph_dma_channel_desc {
+    field {
+        desc = "Linked-list descriptor pointer";
+        hw = r;
+        sw = rw;
+    } desc[31:2];
+};
+
+reg fwperiph_dma_channel_swptr {
+    field {
+        desc = "Software pointer";
+        hw = r;
+        sw = rw;
+    } swptr[30:2];
+    field {
+        desc = "Software pointer enable";
+        hw = r;
+        sw = rw;
+    } swptr_en;
+};
+
+regfile fwperiph_dma_channel {
+    fwperiph_dma_channel_csr        CSR;
+    fwperiph_dma_channel_sz         SZ;
+    fwperiph_dma_channel_addr       SRC_ADDR;
+    fwperiph_dma_channel_mask       SRC_MASK;
+    fwperiph_dma_channel_addr       DST_ADDR;
+    fwperiph_dma_channel_mask       DST_MASK;
+    fwperiph_dma_channel_desc       DESC;
+    fwperiph_dma_channel_swptr      SWPTR;
+};
+
+addrmap fwperiph_dma_map {
+    name = "Featherweight-IP Peripheral DMA Registers";
+    desc = "Registers for the fwperiph_dma IP";
+
+    fwperiph_dma_csr        csr          @0x0000;
+    fwperiph_dma_int_msk_a  int_msk_a    @0x0004;
+    fwperiph_dma_int_msk_b  int_msk_b    @0x0008;
+    fwperiph_dma_int_src_a  int_src_a    @0x000C;
+    fwperiph_dma_int_src_b  int_src_b    @0x0010;
+    fwperiph_dma_channel    channels[31] @0x0020;
+    
+};
+

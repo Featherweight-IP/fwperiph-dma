@@ -1,0 +1,13 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}/packages/python/bin/python3",
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.testing.pytestArgs": [
+        "-s", "src/scripts"
+    ],
+    "python.testing.pytestEnabled": true,
+
+    "search.useIgnoreFiles": true,
+    "search.useGlobalIgnoreFiles": true,
+    "python.testing.unittestEnabled": false
+}
+
