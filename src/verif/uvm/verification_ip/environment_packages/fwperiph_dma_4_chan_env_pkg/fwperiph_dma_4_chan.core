@@ -9,8 +9,7 @@ filesets:
   hvl:
     files:
 # pragma uvmf custom hvl_fileset_additional_items_pre begin
-    - "sv-uvm ? (registers/fwperiph_dma_ral.sv)":
-         include_path: "registers"
+    - "sv-uvm ? (fwperiph_dma_ral.sv)"
 # pragma uvmf custom hvl_fileset_additional_items_pre end
     - "sv-uvm ? (fwperiph_dma_4_chan_env_pkg.sv)":
          include_path: "."

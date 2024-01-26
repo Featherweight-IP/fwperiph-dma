@@ -12,7 +12,15 @@ def setup_build_rtl(dirconfig):
     fs.add_library(
         os.path.join(fwperiph_dma_dir, "packages/uvmf-core/src/uvmf/share/uvmf_base_pkg"))
     fs.add_library(
-        os.path.join(fwperiph_dma_dir, "src/verif"))
+        os.path.join(fwperiph_dma_dir, "packages/fwprotocol-defs"))
+    fs.add_library(
+        os.path.join(fwperiph_dma_dir, "packages/fw-wishbone-interconnect"))
+    fs.add_library(
+        os.path.join(fwperiph_dma_dir, "src/rtl"))
+    fs.add_library(
+        os.path.join(fwperiph_dma_dir, "src/verif/uvm"))
+    fs.add_library(
+        os.path.join(fwperiph_dma_dir, "src/verif/tb"))
 
     sim = HdlSim.create(dirconfig.builddir(), "mti")
     sim.addFiles(

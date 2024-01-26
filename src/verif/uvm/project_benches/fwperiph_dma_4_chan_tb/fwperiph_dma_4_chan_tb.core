@@ -1,0 +1,42 @@
+CAPI=2:
+
+# pragma uvmf custom corefile_head_additional_items begin
+# pragma uvmf custom corefile_head_additional_items end
+
+name: uvmf:project_benches:fwperiph_dma_4_chan_tb
+
+filesets:
+  hvl:
+    files:
+# pragma uvmf custom hvl_fileset_additional_items_pre begin
+# pragma uvmf custom hvl_fileset_additional_items_pre end
+    - "sv-uvm ? (tb/parameters/fwperiph_dma_4_chan_tb_parameters_pkg.sv)":
+         include_path: "tb/parameters"
+    - "sv-uvm ? (tb/sequences/fwperiph_dma_4_chan_tb_sequences_pkg.sv)":
+         include_path: "tb/sequences"
+    - "sv-uvm ? (tb/tests/fwperiph_dma_4_chan_tb_tests_pkg.sv)":
+         include_path: "tb/tests"
+    - "sv-uvm ? (tb/testbench/hdl_top.sv)":
+         include_path: "tb/testbench"
+    - "sv-uvm ? (tb/testbench/hvl_top.sv)":
+         include_path: "tb/testbench"
+# pragma uvmf custom hvl_fileset_additional_items_post begin
+# pragma uvmf custom hvl_fileset_additional_items_post end
+    file_type: systemVerilogSource
+    depend:
+# pragma uvmf custom hvl_fileset_depend_additional_items_pre begin
+      - featherweight-ip::fwperiph_dma.tb
+# pragma uvmf custom hvl_fileset_depend_additional_items_pre end
+      - uvmf:environments:fwperiph_dma_4_chan
+# pragma uvmf custom hvl_fileset_depend_additional_items_post begin
+# pragma uvmf custom hvl_fileset_depend_additional_items_post end
+
+# TODO: add in DPI filesets
+
+targets:
+  default:
+    filesets:
+      - hvl
+      
+# pragma uvmf custom corefile_tail_additional_items begin
+# pragma uvmf custom corefile_tail_additional_items end

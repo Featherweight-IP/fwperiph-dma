@@ -75,9 +75,31 @@ import uvmf_base_pkg_hdl::*;
   fwvip_wb_driver_bfm  mem_init_drv_bfm(mem_init_bus);
 
   // pragma uvmf custom dut_instantiation begin
-  // UVMF_CHANGE_ME : Add DUT and connect to signals in _bus interfaces listed above
-  // Instantiate your DUT here
-  // ...
+
+  fwperiph_dma_4_chan_tb u_tb (
+    .clock(clk),
+    .reset(~rst),
+    .reg_adr(reg_init_bus.adr),
+    .reg_dat_w(reg_init_bus.dat_w),
+    .reg_dat_r(reg_init_bus.dat_r),
+    .reg_cyc(reg_init_bus.cyc),
+    .reg_err(reg_init_bus.err),
+    .reg_sel(reg_init_bus.sel),
+    .reg_stb(reg_init_bus.stb),
+    .reg_ack(reg_init_bus.ack),
+    .reg_we(reg_init_bus.we),
+
+    .mem_adr(mem_init_bus.adr),
+    .mem_dat_w(mem_init_bus.dat_w),
+    .mem_dat_r(mem_init_bus.dat_r),
+    .mem_cyc(mem_init_bus.cyc),
+    .mem_err(mem_init_bus.err),
+    .mem_sel(mem_init_bus.sel),
+    .mem_stb(mem_init_bus.stb),
+    .mem_ack(mem_init_bus.ack),
+    .mem_we(mem_init_bus.we)
+  );
+
   // pragma uvmf custom dut_instantiation end
 
   initial begin      // tbx vif_binding_block 

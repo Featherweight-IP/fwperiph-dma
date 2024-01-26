@@ -1,6 +1,6 @@
 CAPI=2:
 
-name: featherweight-ip:fwperiph-dma.rtl
+name: featherweight-ip::fwperiph-dma.rtl
 
 filesets:
   rtl:

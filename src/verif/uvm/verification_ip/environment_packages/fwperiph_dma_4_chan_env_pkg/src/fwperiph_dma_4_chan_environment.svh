@@ -98,10 +98,10 @@ class fwperiph_dma_4_chan_environment  extends uvmf_environment_base #(
       reg_adapter = new("reg_adapter");
     // Set sequencer and adapter in register model map
     if ((configuration.enable_reg_adaptation) && (reg_init.sequencer != null ))
-      configuration.fwperiph_dma_4_chan_rm.reg_map.set_sequencer(reg_init.sequencer, reg_adapter);
+      configuration.fwperiph_dma_4_chan_rm.default_map.set_sequencer(reg_init.sequencer, reg_adapter);
     // Set map and adapter handles within uvm predictor
     if (configuration.enable_reg_prediction) begin
-      reg_predictor.map     = configuration.fwperiph_dma_4_chan_rm.reg_map;
+      reg_predictor.map     = configuration.fwperiph_dma_4_chan_rm.default_map;
       reg_predictor.adapter = reg_adapter;
       // The connection between the agent analysis_port and uvm_reg_predictor 
       // analysis_export could cause problems due to a uvm register package bug,

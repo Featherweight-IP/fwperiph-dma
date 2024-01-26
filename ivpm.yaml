@@ -12,6 +12,12 @@ package:
         deps:
         - name: fwprotocol-defs
           url: http://github.com/Featherweight-IP/fwprotocol-defs.git
+        - name: fw-wishbone-interconnect
+          url: http://github.com/Featherweight-IP/fw-wishbone-interconnect.git
+        - name: fw-wishbone-sram-ctrl
+          url: http://github.com/Featherweight-IP/fw-wishbone-sram-ctrl.git
+        - name: fwgeneric-mem
+          url: http://github.com/Featherweight-IP/fwgeneric-mem.git
         - name: fwvip-wb
           url: https://github.com/featherweight-vip/fwvip-wb.git
         - name: pyvsc
@@ -20,6 +26,9 @@ package:
           url: https://github.com/fvutils/pytest-fv.git
         - name: uvmf-core
           url: https://github.com/fvutils/uvmf-core.git
+        - name: peakrdl-uvm
+          url: https://github.com/mballance/PeakRDL-uvm.git
+          branch: uvm_objutils
         - name: peakrdl
           src: pypi
 

@@ -122,7 +122,7 @@ reg fwperiph_dma_channel_csr {
         desc = "DMA channel priority";
         hw = w;
         sw = r;
-    } priority[15:13];
+    } pri[15:13];
 };
 
 reg fwperiph_dma_channel_sz {

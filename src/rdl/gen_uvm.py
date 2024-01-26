@@ -3,10 +3,10 @@ import os
 import subprocess
 
 rdl_dir = os.path.dirname(os.path.abspath(__file__))
-verif_dir = os.path.abspath(os.path.join(rdl_dir, "../verif"))
+verif_dir = os.path.abspath(os.path.join(rdl_dir, "../verif/uvm"))
 outdir = os.path.join(verif_dir, 
                       "verification_ip/environment_packages",
-                      "fwperiph_dma_4_chan_env_pkg/registers")
+                      "fwperiph_dma_4_chan_env_pkg")
 
 cmd = [ 'peakrdl', 'uvm' ]
 cmd.append(os.path.join(rdl_dir, "fwperiph_dma.rdl"))
