@@ -4,3 +4,5 @@ rundir/
 cache/
 __pycache__/
 
+uvm_bak_*/
+

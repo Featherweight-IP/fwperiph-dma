@@ -40,6 +40,7 @@ package fwperiph_dma_4_chan_tb_tests_pkg;
 
   // pragma uvmf custom package_item_additional begin
    `include "src/test_reg_smoke.svh"
+   `include "src/test_pss_smoke.svh"
   // UVMF_CHANGE_ME : When adding new tests to the src directory
   //    be sure to add the test file here so that it will be
   //    compiled as part of the test package.  Be sure to place

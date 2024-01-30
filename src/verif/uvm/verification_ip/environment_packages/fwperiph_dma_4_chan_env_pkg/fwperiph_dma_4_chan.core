@@ -26,6 +26,7 @@ filesets:
 # pragma uvmf custom hvl_fileset_depend_additional_items_post_agents end
       - ":uvmf:base_pkg"
 # pragma uvmf custom hvl_fileset_depend_additional_items_post begin
+      - "zuspec::sv"
 # pragma uvmf custom hvl_fileset_depend_additional_items_post end
 
 # pragma uvmf custom filesets_additional_items begin

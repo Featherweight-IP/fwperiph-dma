@@ -32,6 +32,7 @@ package fwperiph_dma_4_chan_tb_sequences_pkg;
 
 
   // pragma uvmf custom package_imports_additional begin
+  import zuspec::*;
   // pragma uvmf custom package_imports_additional end
 
   `include "src/fwperiph_dma_4_chan_tb_bench_sequence_base.svh"
@@ -40,6 +41,7 @@ package fwperiph_dma_4_chan_tb_sequences_pkg;
 
   // pragma uvmf custom package_item_additional begin
   `include "src/test_reg_smoke_seq.svh"
+  `include "src/pss_smoke_seq.svh"
   // UVMF_CHANGE_ME : When adding new sequences to the src directory
   //    be sure to add the sequence file here so that it will be
   //    compiled as part of the sequence package.  Be sure to place

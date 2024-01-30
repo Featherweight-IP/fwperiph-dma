@@ -32,3 +32,6 @@ package:
         - name: peakrdl
           src: pypi
 
+        - name: zuspec-sv
+          url: https://github.com/zuspec/zuspec-sv.git
+
