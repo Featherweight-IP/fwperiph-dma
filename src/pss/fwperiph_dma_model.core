@@ -1,0 +1,14 @@
+CAPI=2:
+
+name: featherweight-ip::fwperiph-dma.pss.model
+
+filesets:
+  pss:
+    files:
+      - "pss ? (FwPeriphDmaC.pss)"
+    file_type: pssSource
+
+targets:
+  default:
+    filesets:
+      - pss

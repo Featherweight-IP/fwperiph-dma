@@ -5,4 +5,7 @@ cache/
 __pycache__/
 
 uvm_bak_*/
+obj_dir/
+work/
+
 

@@ -26,6 +26,7 @@ filesets:
     depend:
 # pragma uvmf custom hvl_fileset_depend_additional_items_pre begin
       - featherweight-ip::fwperiph_dma.tb
+      - featherweight-ip::fwperiph-dma.pss.tests
 # pragma uvmf custom hvl_fileset_depend_additional_items_pre end
       - uvmf:environments:fwperiph_dma_4_chan
 # pragma uvmf custom hvl_fileset_depend_additional_items_post begin
