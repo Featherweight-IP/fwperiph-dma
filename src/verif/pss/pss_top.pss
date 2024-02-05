@@ -1,12 +1,21 @@
 import std_pkg::*;
 
+import function void doit();
+
 component pss_top {
+    transparent_addr_space_c<> aspace;
+    addr_handle_t              base;
+
+    exec init_down {
+        transparent_addr_region_s<> region;
+        region.addr = 0x0;
+        region.size = 0x1_0000_0000;
+        base = aspace.add_nonallocatable_region(region);
+    }
+
     action Entry {
         exec post_solve {
-            print("Hello  World(1)");
-            print("Hello  World(2)");
-            print("Hello  World(3)");
+            write32(comp.base, 0x55aaeeff);
         }
-
     }
 }

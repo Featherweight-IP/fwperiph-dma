@@ -29,6 +29,8 @@ package:
         - name: peakrdl-uvm
           url: https://github.com/mballance/PeakRDL-uvm.git
           branch: uvm_objutils
+        - name: peakrdl-pss
+          url: https://github.com/mballance/PeakRDL-pss.git
         - name: peakrdl
           src: pypi
 

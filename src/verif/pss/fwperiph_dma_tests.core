@@ -5,8 +5,8 @@ name: featherweight-ip::fwperiph-dma.pss.tests
 filesets:
   pss:
     files:
-      - "pss ? (FwPeriphDmaC_RegTest.pss)"
-      - "pss ? (pss_top.pss)"
+      - FwPeriphDmaC_RegTest.pss
+      - pss_top.pss
     file_type: pssSource
     depend:
       - featherweight-ip::fwperiph-dma.pss.model

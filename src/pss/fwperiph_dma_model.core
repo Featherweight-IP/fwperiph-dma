@@ -5,7 +5,8 @@ name: featherweight-ip::fwperiph-dma.pss.model
 filesets:
   pss:
     files:
-      - "pss ? (FwPeriphDmaC.pss)"
+      - fwperiph_dma_ral.pss
+      - FwPeriphDmaC.pss
     file_type: pssSource
 
 targets:

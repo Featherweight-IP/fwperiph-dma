@@ -80,7 +80,7 @@ component pss_top {
             doit();
             write32(comp.base_h, 1);
             comp.regs.r1.write_val(2);
-            comp.regs.r2.write_val(3);
+            comp.regs.r2.w/project/fun/featherweight-ip/fwperiph-dma-uvmf/packages/zuspec-be-swrite_val(3);
         }
     }
 }
@@ -89,11 +89,10 @@ component pss_top {
     args = flow.sim.mkRunArgs(dirconfig.rundir())
     args.plusargs.append("UVM_TESTNAME=test_pss_smoke")
 #    args.plusargs.append("zuspec.pssfiles=pss_top.pss")
-    args.plusargs.append("zuspec.debug=0")
+    args.plusargs.append("zuspec.debug=1")
     runtest.addSubTask(flow.sim.mkRunTask(args))
     flow.addTaskToPhase("run.main", runtest)
 
     loop = asyncio.new_event_loop()
     loop.run_until_complete(flow.run())
-
 
