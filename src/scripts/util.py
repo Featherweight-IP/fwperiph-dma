@@ -22,8 +22,8 @@ def setup_build_rtl(dirconfig):
         os.path.join(fwperiph_dma_dir, "packages/fw-wishbone-interconnect"))
     fs.add_library(
         os.path.join(fwperiph_dma_dir, "packages/fw-wishbone-sram-ctrl"))
-#    fs.add_library(
-#        os.path.join(fwperiph_dma_dir, "packages/zuspec-sv/src"))
+    fs.add_library(
+        os.path.join(fwperiph_dma_dir, "packages/pss-uvm-util"))
     fs.add_library(
         os.path.join(fwperiph_dma_dir, "src/rtl"))
     fs.add_library(

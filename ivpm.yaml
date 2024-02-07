@@ -33,6 +33,8 @@ package:
           url: https://github.com/mballance/PeakRDL-pss.git
         - name: peakrdl
           src: pypi
+        - name: pss-uvm-util
+          url: https://github.com/psstools/pss-uvm-util.git
 
         - name: zuspec-sv
           url: https://github.com/zuspec/zuspec-sv.git

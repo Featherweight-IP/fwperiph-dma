@@ -5,17 +5,23 @@ import function void doit();
 component pss_top {
     transparent_addr_space_c<> aspace;
     addr_handle_t              base;
+    fwperiph_dma_map           regs;
 
     exec init_down {
         transparent_addr_region_s<> region;
         region.addr = 0x0;
         region.size = 0x1_0000_0000;
         base = aspace.add_nonallocatable_region(region);
+        regs.set_handle(base);
     }
 
     action Entry {
-        exec post_solve {
+
+        exec body {
             write32(comp.base, 0x55aaeeff);
+            comp.regs.csr.write_val(0x11223344);
+            comp.regs.int_msk_a.write_val(0x22334455);
+            comp.regs.int_msk_b.write_val(0x33445566);
         }
     }
 }

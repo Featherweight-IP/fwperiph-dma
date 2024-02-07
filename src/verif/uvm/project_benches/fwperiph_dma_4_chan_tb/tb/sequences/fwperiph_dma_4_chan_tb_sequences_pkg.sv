@@ -35,6 +35,7 @@ package fwperiph_dma_4_chan_tb_sequences_pkg;
   import zuspec::*;
   import pss_api_pkg::*;
   import zuspec_actor_pkg::*;
+  import pss_uvm_util::*;
   // pragma uvmf custom package_imports_additional end
 
   `include "src/fwperiph_dma_4_chan_tb_bench_sequence_base.svh"
