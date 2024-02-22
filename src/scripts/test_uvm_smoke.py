@@ -12,20 +12,20 @@ def test_smoke(dirconfig):
 
     sim.debug = True
 
-    sim.build()
     args = sim.mkRunArgs(dirconfig.rundir())
     args.plusargs.append("UVM_TESTNAME=test_top")
     sim.run(args)
 
 def test_reg_smoke(dirconfig):
-    sim, fs = setup_build_rtl(dirconfig)
+    flow = setup_build_rtl(dirconfig)
 
-    sim.debug = True
+    flow.sim.debug = True
 
-    sim.build()
-    args = sim.mkRunArgs(dirconfig.rundir())
+    args = flow.sim.mkRunArgs(dirconfig.rundir())
     args.plusargs.append("UVM_TESTNAME=test_reg_smoke")
-    sim.run(args)
+    flow.addTaskToPhase("run.main", flow.sim.mkRunTask(args))
+    flow.run_all()
+
 
 def test_pss_smoke(dirconfig):
     flow = setup_build_rtl(dirconfig)

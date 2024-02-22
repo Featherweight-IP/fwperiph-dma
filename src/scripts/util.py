@@ -1,5 +1,6 @@
 import os
 import pytest
+import pytest_fv as ptv
 from pytest_fv import FuseSoc, HdlSim, FlowSim
 from pytest_fv.exts.test.pss import ExtPSS
 import zsp_sv
@@ -10,30 +11,30 @@ def setup_build_rtl(dirconfig):
     fwperiph_dma_dir = os.path.abspath(os.path.join(scripts_dir, "../.."))
 
     flow = FlowSim(dirconfig, "mti")
-    fs = flow.fs
+    # fs = flow.fs
 
-    fs.add_library(
-        os.path.join(fwperiph_dma_dir, "packages/fwvip-wb/src/vip"))
-    fs.add_library(
-        os.path.join(fwperiph_dma_dir, "packages/uvmf-core/src/uvmf/share/uvmf_base_pkg"))
-    fs.add_library(
-        os.path.join(fwperiph_dma_dir, "packages/fwprotocol-defs"))
-    fs.add_library(
-        os.path.join(fwperiph_dma_dir, "packages/fw-wishbone-interconnect"))
-    fs.add_library(
-        os.path.join(fwperiph_dma_dir, "packages/fw-wishbone-sram-ctrl"))
-    fs.add_library(
-        os.path.join(fwperiph_dma_dir, "packages/pss-uvm-util"))
-    fs.add_library(
-        os.path.join(fwperiph_dma_dir, "src/rtl"))
-    fs.add_library(
-        os.path.join(fwperiph_dma_dir, "src/pss"))
-    fs.add_library(
-        os.path.join(fwperiph_dma_dir, "src/verif/pss"))
-    fs.add_library(
-        os.path.join(fwperiph_dma_dir, "src/verif/uvm"))
-    fs.add_library(
-        os.path.join(fwperiph_dma_dir, "src/verif/tb"))
+    # fs.add_library(
+    #     os.path.join(fwperiph_dma_dir, "packages/fwvip-wb/src/vip"))
+    # fs.add_library(
+    #     os.path.join(fwperiph_dma_dir, "packages/uvmf-core/src/uvmf/share/uvmf_base_pkg"))
+    # fs.add_library(
+    #     os.path.join(fwperiph_dma_dir, "packages/fwprotocol-defs"))
+    # fs.add_library(
+    #     os.path.join(fwperiph_dma_dir, "packages/fw-wishbone-interconnect"))
+    # fs.add_library(
+    #     os.path.join(fwperiph_dma_dir, "packages/fw-wishbone-sram-ctrl"))
+    # fs.add_library(
+    #     os.path.join(fwperiph_dma_dir, "packages/pss-uvm-util"))
+    # fs.add_library(
+    #     os.path.join(fwperiph_dma_dir, "src/rtl"))
+    # fs.add_library(
+    #     os.path.join(fwperiph_dma_dir, "src/pss"))
+    # fs.add_library(
+    #     os.path.join(fwperiph_dma_dir, "src/verif/pss"))
+    # fs.add_library(
+    #     os.path.join(fwperiph_dma_dir, "src/verif/uvm"))
+    # fs.add_library(
+    #     os.path.join(fwperiph_dma_dir, "src/verif/tb"))
     
 #    libpath = os.path.join(
 #        zsp_sv.get_libdirs()[0],
@@ -41,15 +42,17 @@ def setup_build_rtl(dirconfig):
 #    )
 #    print("libpath: %s" % libpath)
     
-    pss = ExtPSS.create()
-    pss.pss_core_vlnv = "featherweight-ip::fwperiph_dma.pss.model"
-    pss.pss_vlnv = "uvmf:project_benches:fwperiph_dma_4_chan_tb"
-    pss.apply(flow)
+    # pss = ExtPSS.create()
+    # pss.pss_core_vlnv = "featherweight-ip::fwperiph_dma.pss.model"
+    # pss.pss_vlnv = "uvmf:project_benches:fwperiph_dma_4_chan_tb"
+    # pss.apply(flow)
+
+    flow.addFileset("sim", ptv.FSVlnv("uvmf:project_benches:fwperiph_dma_4_chan_tb"))
 
     sim = flow.sim
-    sim.addFiles(
-        fs.getFiles("uvmf:project_benches:fwperiph_dma_4_chan_tb"),
-        {'sv-uvm': True})
+#    sim.addFiles(
+#        fs.getFiles("uvmf:project_benches:fwperiph_dma_4_chan_tb"),
+#        {'sv-uvm': True})
 #    sim.dpi_libs.append(libpath)
     sim.top.add("hdl_top")
     sim.top.add("hvl_top")

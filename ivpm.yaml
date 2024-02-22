@@ -10,6 +10,9 @@ package:
 
       - name: default-dev
         deps:
+                #        - name: ivpm
+                #          url: https://github.com/fvutils/ivpm.git
+                #          branch: pkginfo-paths
         - name: fwprotocol-defs
           url: http://github.com/Featherweight-IP/fwprotocol-defs.git
         - name: fw-wishbone-interconnect
@@ -38,4 +41,21 @@ package:
 
         - name: zuspec-sv
           url: https://github.com/zuspec/zuspec-sv.git
+    
+    paths:
+      export: 
+        lib-dirs:
+          - src/pss
+          - src/rtl
+      project:
+        lib-dirs:
+          - src/pss
+          - src/rtl
+          - src/verif/pss
+          - src/verif/tb
+          - src/verif/uvm
+        uvmf:
+          - src/verif/uvm/yaml
+
+
 

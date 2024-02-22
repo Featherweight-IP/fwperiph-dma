@@ -29,7 +29,7 @@ filesets:
       - featherweight-ip::fwperiph-dma.pss.tests
       - psstools::pss-uvm-util
 # pragma uvmf custom hvl_fileset_depend_additional_items_pre end
-      - uvmf:environments:fwperiph_dma_4_chan
+#      - uvmf:environments:fwperiph_dma_4_chan
 # pragma uvmf custom hvl_fileset_depend_additional_items_post begin
 # pragma uvmf custom hvl_fileset_depend_additional_items_post end
 

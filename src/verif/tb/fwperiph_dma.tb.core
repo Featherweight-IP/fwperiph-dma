@@ -28,11 +28,11 @@ filesets:
       files:
         - fwperiph_dma_4_chan_tb.sv
       file_type: systemVerilogSource
-      depend:
-         - featherweight-ip::fwprotocol-defs
-         - featherweight-ip::fw-wishbone-interconnect
-         - featherweight-ip::fwperiph-dma.rtl
-         - featherweight-ip::fw-wishbone-sram-ctrl
+      depend: 
+       - featherweight-ip::fwprotocol-defs
+       - featherweight-ip::fw-wishbone-interconnect
+       - featherweight-ip::fwperiph-dma.rtl
+       - featherweight-ip::fw-wishbone-sram-ctrl
 
 targets:
   default:
