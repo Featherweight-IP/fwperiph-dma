@@ -37,3 +37,14 @@ package:
           url: https://github.com/zephyrproject-rtos/zephyr.git
           depth: 1
 
+    paths:
+      export:
+        lib-dirs:
+          - verilog/rtl
+      project:
+        lib-dirs:
+          - verilog/rtl
+          - verilog/dv
+
+
+

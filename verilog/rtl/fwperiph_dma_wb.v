@@ -1078,7 +1078,8 @@ wb_dma_wb_if	#(rf_addr) u_wb_if1(
 		.slv_pt_out(	slv1_pt_out	),
 		.slv_pt_in(	slv1_pt_in	)
 		);
-		
+
+`ifdef UNDEFINED		
 	fwperiph_dma_dbg #(
 			.ch_count(ch_count)
 		) u_dbg (
@@ -1090,6 +1091,7 @@ wb_dma_wb_if	#(rf_addr) u_wb_if1(
 			.dma_busy(dma_busy         ),
 			.dma_done_all(dma_done_all )
 		);
+`endif // UNDEFINED		
 
 
 endmodule
