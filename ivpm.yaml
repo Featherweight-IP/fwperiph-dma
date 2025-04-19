@@ -1,41 +1,44 @@
 package:
     name: fwperiph-dma
-    version: None
-    deps:
-        - name: fwprotocol-defs
-          url: http://github.com/Featherweight-IP/fwprotocol-defs.git
-          type: raw
 
-    dev-deps:
-        - name: fwprotocol-defs
-          url: http://github.com/Featherweight-IP/fwprotocol-defs.git
-          type: raw
-        - name: vlsim
-          type: python
-          src: pypi
-        - name: pyvsc
-          url: https://github.com/fvutils/pyvsc.git
-          type: python
-        - name: mkdv
-          url: https://github.com/fvutils/mkdv.git
-          type: python
-        - name: pybfms
-          url: https://github.com/pybfms/pybfms.git
-          type: python
-        - name: pybfms_event
-          url: https://github.com/pybfms/pybfms_event.git
-          type: python
-        - name: pybfms-wishbone
-          url: https://github.com/pybfms/pybfms-wishbone.git
-          type: python
-        - name: pybfms_generic_sram
-          url: https://github.com/pybfms/pybfms_generic_sram.git
-          type: python
-        - name: zephyr-cosim
-          url: https://github.com/zephyr-cosim/zephyr-cosim.git
-        - name: zephyr
-          url: https://github.com/zephyrproject-rtos/zephyr.git
-          depth: 1
+    dep-sets:
+    - name: default
+      deps:
+      - name: fwprotocol-defs
+        url: http://github.com/Featherweight-IP/fwprotocol-defs.git
+        type: raw
+
+    - name: default-dev
+      deps:
+      - name: fwprotocol-defs
+        url: http://github.com/Featherweight-IP/fwprotocol-defs.git
+        type: raw
+      - name: vlsim
+        type: python
+        src: pypi
+      - name: pyvsc
+        url: https://github.com/fvutils/pyvsc.git
+        type: python
+      - name: mkdv
+        url: https://github.com/fvutils/mkdv.git
+        type: python
+      - name: pybfms
+        url: https://github.com/pybfms/pybfms.git
+        type: python
+      - name: pybfms_event
+        url: https://github.com/pybfms/pybfms_event.git
+        type: python
+      - name: pybfms-wishbone
+        url: https://github.com/pybfms/pybfms-wishbone.git
+        type: python
+      - name: pybfms_generic_sram
+        url: https://github.com/pybfms/pybfms_generic_sram.git
+        type: python
+      - name: zephyr-cosim
+        url: https://github.com/zephyr-cosim/zephyr-cosim.git
+      - name: zephyr
+        url: https://github.com/zephyrproject-rtos/zephyr.git
+        depth: 1
 
     paths:
       export:
