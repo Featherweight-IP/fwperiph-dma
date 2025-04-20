@@ -5,5 +5,6 @@ fragment:
   - name: fwperiph-dma-rtl
     uses: std.FileSet
     with:
-      include: "*.sv"
+      include: 
+      - "*.v"
       type: verilogSource
