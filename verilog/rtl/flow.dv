@@ -1,0 +1,9 @@
+
+fragment:
+ 
+  tasks:
+  - name: fwperiph-dma-rtl
+    uses: std.FileSet
+    with:
+      include: "*.sv"
+      type: verilogSource

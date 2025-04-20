@@ -1,0 +1,13 @@
+package:
+  name: fwperiph-dma
+
+  tasks:
+  - name: src-sv-rtl
+    passthrough: all
+    needs: [fwperiph-dma-rtl]
+
+
+  fragments:
+  - verilog/rtl/flow.dv
+
+    
